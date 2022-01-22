@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,19 +20,15 @@ public class TaskService {
     }
 
 
-    public ResponseMessage getTasks(String datetimeStr, String dateType) {
-        ResponseMessage responseMessage = new ResponseMessage();
+    public List<Task> getTasks(LocalDateTime dateTime) {
+        List<Task> taskList = new ArrayList<>();
         try{
-            LocalDateTime dateTime = Util.getLocalDateTimeFromString(datetimeStr, dateType);
-            List<Task> taskList = taskRepository.getAllByCreationDate(dateTime);
-            responseMessage.setOkStatus();
-            responseMessage.setTaskList(taskList);
+            taskList = taskRepository.getAllByCreationDate(dateTime);
         }
         catch (Exception e){
-            responseMessage.setError(e.getMessage());
+            e.printStackTrace();
         }
-
-        return responseMessage;
+        return taskList;
     }
 
     public ResponseMessage addTask(String task) {

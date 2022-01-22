@@ -3,7 +3,6 @@ package com.app.todo.repository;
 import com.app.todo.domain.Task;
 import org.springframework.data.repository.CrudRepository;
 
-import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.List;
 

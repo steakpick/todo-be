@@ -1,15 +1,20 @@
 package com.app.todo.response;
 
 
+import com.app.todo.domain.Board;
 import com.app.todo.domain.Task;
 
 import java.util.List;
+import java.util.Map;
 
 public class ResponseMessage {
     private String message;
     private String status;
 
-    private List<Task> taskList;
+    private Map<String, List<Task>> tasksByStatus;
+    private List<Board> boardList;
+    private List<Task> tasks;
+
 
     public ResponseMessage() {
     }
@@ -50,11 +55,27 @@ public class ResponseMessage {
         this.status = status;
     }
 
-    public List<Task> getTaskList() {
-        return taskList;
+    public Map<String, List<Task>> getTasksByStatus() {
+        return tasksByStatus;
     }
 
-    public void setTaskList(List<Task> taskList) {
-        this.taskList = taskList;
+    public void setTasksByStatus(Map<String, List<Task>> tasksByStatus) {
+        this.tasksByStatus = tasksByStatus;
+    }
+
+    public List<Board> getBoardList() {
+        return boardList;
+    }
+
+    public void setBoardList(List<Board> boardList) {
+        this.boardList = boardList;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }
